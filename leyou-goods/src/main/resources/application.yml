@@ -1,0 +1,32 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: leyou-goods
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.80.128:3306/leyouMail?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  type-aliases-package: com.leyou.api.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+
+#将服务提供者注册到Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka/
+  instance:
+    instance-id: leyou-goods-8001 #定义微服务的名称
+    prefer-ip-address: true #是否显示IP和端口
+
+#监控信息配置
+info:
+  app.name: LeyouMail-goods
+  company.name: www.drper.cn
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}

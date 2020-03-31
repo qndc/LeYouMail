@@ -1,0 +1,17 @@
+server:
+  port: 7001    #定义注册中心端口
+spring:
+  application:
+    name: leyou-registry
+
+eureka:
+  server:
+    enable-self-preservation: true #设定自我保护模式 默认值为true 不建议关闭
+  instance:
+    hostname: leyou-registry-7001
+  client:
+    register-with-eureka: false #表示注册中心 不会注册自己本身
+    fetch-registry: false #表示自己就是注册中心,不需要检索服务
+    service-url:
+      defaultZone: http://127.0.0.1:${server.port}/eureka/
+

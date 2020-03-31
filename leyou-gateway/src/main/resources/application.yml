@@ -1,0 +1,25 @@
+server:
+  port: 7002
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: leyou-gateway
+
+#将Zuul注册到Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka/
+  instance:
+    instance-id: leyou-gateway-7002
+    prefer-ip-address: true #是否显示IP和端口
+
+zuul:
+  prefix: /leyou
+  routes:
+    goods-service:
+      serviceId: leyou-goods    #需要服务端映射路径名称
+      path:      /goods/**         #编辑浏览器输入地址
+  ignored-services: leyou-goods #不能通过这个微服务名访问
