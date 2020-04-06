@@ -18,6 +18,11 @@
             <artifactId>leyou-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.leyou.common</groupId>
+            <artifactId>leyou-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!-- actuator监控信息-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
