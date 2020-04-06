@@ -17,7 +17,7 @@ eureka:
     prefer-ip-address: true #是否显示IP和端口
 
 zuul:
-  prefix: /leyou
+  prefix: /
   routes:
     goods-service:
       serviceId: leyou-goods    #需要服务端映射路径名称
