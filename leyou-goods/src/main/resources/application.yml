@@ -6,7 +6,7 @@ spring:
     name: leyou-goods
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://192.168.80.128:3306/leyouMail?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://192.168.80.128:3306/LeyouMail?useUnicode=true&characterEncoding=utf-8
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver

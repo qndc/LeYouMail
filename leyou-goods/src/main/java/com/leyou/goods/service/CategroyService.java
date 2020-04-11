@@ -13,4 +13,6 @@ public interface CategroyService {
 
 
     List<Category> categroyList(Long pid);
+
+    List<String> queryNamesByIds(List<Long> ids);
 }

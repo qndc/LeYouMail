@@ -2,6 +2,7 @@ package com.leyou.goods.mapper;
 
 
 import com.leyou.api.pojo.Category;
+import tk.mybatis.mapper.additional.idlist.SelectByIdListMapper;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
@@ -9,7 +10,7 @@ import tk.mybatis.mapper.common.Mapper;
  * @Date: 2020/4/5 20:15
  * @Description:
  */
-public interface CategroyMapper extends Mapper<Category> {
+public interface CategroyMapper extends Mapper<Category>, SelectByIdListMapper<Category,Long> {
 
 
 }

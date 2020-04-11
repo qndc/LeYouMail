@@ -124,7 +124,7 @@ export default {
   methods: {
     loadData() {
       this.$http
-        .get("/item/spec/params?gid=" + this.group.id)
+        .get("/goods/spec/params?gid=" + this.group.id)
         .then(({ data }) => {
           data.forEach(p => {
               p.segments = p.segments ? p.segments.split(",").map(s => s.split("-")) : [];

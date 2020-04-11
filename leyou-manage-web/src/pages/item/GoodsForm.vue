@@ -18,7 +18,7 @@
               <v-flex xs5>
                 <!--商品分类-->
                 <v-cascader
-                  url="/item/category/list"
+                  url="/goods/categroy/list"
                   required
                   showAllLevels
                   v-model="goods.categories"
@@ -218,7 +218,7 @@ export default {
 
       this.$http({
         method: this.isEdit ? "put" : "post",
-        url: "/item/goods",
+        url: "/goods/goods",
         data: goodsParams
       })
         .then(() => {
@@ -278,13 +278,13 @@ export default {
         if (val && val.length > 0) {
           // 根据分类查询品牌
           this.$http
-            .get("/item/brand/cid/" + this.goods.categories[2].id)
+            .get("/goods/brand/cid/" + this.goods.categories[2].id)
             .then(({ data }) => {
               this.brandOptions = data;
             });
           // 根据分类查询规格参数
           this.$http
-            .get("/item/spec/params?cid=" + this.goods.categories[2].id)
+            .get("/goods/spec/params?cid=" + this.goods.categories[2].id)
             .then(({ data }) => {
               let specs = [];
               let template = [];

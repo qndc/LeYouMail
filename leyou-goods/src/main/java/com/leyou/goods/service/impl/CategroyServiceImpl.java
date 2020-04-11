@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Auther: dc
@@ -29,5 +30,16 @@ public class CategroyServiceImpl implements CategroyService {
         Category category = new Category();
         category.setParentId(pid);
         return categroyMapper.select(category);
+    }
+
+    /**
+     * 根据多级分类id查询分类名称
+     * @param ids
+     * @return
+     */
+    @Override
+    public List<String> queryNamesByIds(List<Long> ids) {
+        List<Category> categories = this.categroyMapper.selectByIdList(ids);
+        return categories.stream().map(category -> category.getName()).collect(Collectors.toList());
     }
 }

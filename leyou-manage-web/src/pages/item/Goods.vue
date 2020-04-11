@@ -110,10 +110,10 @@
         step: 1, // 子组件中的步骤线索引，默认为1
       }
     },
-    mounted() { // 渲染后执行
-      // 查询数据
-      this.getDataFromServer();
-    },
+    // mounted() { // 渲染后执行
+    //   // 查询数据
+    //   this.getDataFromServer();
+    // },
     watch: {
       pagination: { // 监视pagination属性的变化
         deep: true, // deep为true，会监视pagination的属性及属性中的对象属性变化
@@ -132,7 +132,7 @@
     methods: {
       getDataFromServer() { // 从服务的加载数的方法。
         // 发起请求
-        this.$http.get("/item/spu/page", {
+        this.$http.get("/goods/spu/page", {
           params: {
             key: this.filter.search, // 搜索条件
             saleable: this.filter.saleable === 0 ? null : this.filter.saleable, // 上下架
@@ -142,6 +142,11 @@
         }).then(resp => { // 这里使用箭头函数
           this.goodsList = resp.data.items;
           this.totalGoods = resp.data.total;
+          // 完成赋值后，把加载状态赋值为false
+          this.loading = false;
+        }).catch(() => {
+          this.goodsList = [];
+          this.totalGoods = 0;
           // 完成赋值后，把加载状态赋值为false
           this.loading = false;
         })
@@ -156,8 +161,8 @@
       },
       async editGoods(oldGoods) {
         // 发起请求，查询商品详情和skus
-        oldGoods.spuDetail = await this.$http.loadData("/item/spu/detail/" + oldGoods.id);
-        oldGoods.skus = await this.$http.loadData("/item/sku/list?id=" + oldGoods.id);
+        oldGoods.spuDetail = await this.$http.loadData("/goods/spu/detail/" + oldGoods.id);
+        oldGoods.skus = await this.$http.loadData("/goods/sku/list?id=" + oldGoods.id);
         // 修改标记
         this.isEdit = true;
         // 控制弹窗可见：
